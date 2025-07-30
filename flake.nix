@@ -8,9 +8,7 @@
       lib = import ./lib { inherit (pkgs) lib; };
     in {
       nixosModules = {
-        immich = import ./modules/immich.nix;
-        jellyfin = import ./modules/jellyfin.nix;
-        default = [ ./modules/immich.nix ./modules/jellyfin.nix ];
+        imports = [ ./modules/immich.nix ./modules/jellyfin.nix ];
       };
     };
 }
