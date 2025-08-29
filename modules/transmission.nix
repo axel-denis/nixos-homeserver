@@ -49,8 +49,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    virtualisation.docker.enable = true;
-    virtualisation.oci-containers.backend = "docker";
+    # virtualisation.docker.enable = true;
+    # virtualisation.oci-containers.backend = "docker";
 
     virtualisation.oci-containers.containers.transmission = {
       image = "haugene/transmission-openvpn:${cfg.version}";

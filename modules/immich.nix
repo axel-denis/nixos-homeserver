@@ -58,8 +58,8 @@ in {
 
   config = mkIf cfg.enable {
 
-    virtualisation.docker.enable = true;
-    virtualisation.oci-containers.backend = "docker";
+    # virtualisation.docker.enable = true;
+    # virtualisation.oci-containers.backend = "docker";
 
     virtualisation.oci-containers.containers = {
       immich = {
@@ -113,7 +113,8 @@ in {
 
     systemd.services = helpers.mkDockerNetworkService {
       networkName = "immich-net";
-      dockerCli = "${config.virtualisation.docker.package}/bin/docker";
+      # dockerCli = "${config.virtualisation.docker.package}/bin/docker";
+      dockerCli = "${config.virtualisation.podman.package}/bin/podman";
     };
   };
 }
