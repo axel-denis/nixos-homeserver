@@ -24,6 +24,7 @@
         hdd-spindown = mkModule ./modules/hdd-spindown.nix;
         psitransfer = mkModule ./modules/psitransfer.nix;
         routing = mkModule ./modules/routing.nix;
+        iperf = mkModule ./modules/iperf.nix;
 
         default = { ... }: {
           imports = [
@@ -35,6 +36,7 @@
             self.nixosModules.hdd-spindown
             self.nixosModules.psitransfer
             self.nixosModules.routing
+            self.nixosModules.iperf
           ];
         };
       };
