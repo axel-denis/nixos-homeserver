@@ -110,7 +110,7 @@ in {
           "--network=anytype-net"
           "--pull=always"
         ];
-        entrypoint = [ "--replSet" "rs0" ];
+        cmd = [ "--replSet" "rs0" ];
       };
 
       any-sync-redis = {
@@ -131,7 +131,7 @@ in {
           MINIO_ROOT_USER = "minio";
           MINIO_ROOT_PASSWORD = "miniopassword";
         };
-        entrypoint = [ "server" "/data" "--console-address" ":9001" ];
+        cmd = [ "server" "/data" "--console-address" ":9001" ];
         extraOptions = [
           "--network=anytype-net"
           "--pull=always"
