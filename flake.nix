@@ -28,6 +28,7 @@
         psitransfer = mkModule ./modules/psitransfer.nix;
         routing = mkModule ./modules/routing.nix;
         pihole = mkModule ./modules/pihole.nix;
+        anytype = mkModule ./modules/anytype.nix;
 
         default =
           { lib, ... }:
@@ -43,6 +44,7 @@
               self.nixosModules.psitransfer
               self.nixosModules.routing
               self.nixosModules.pihole
+              self.nixosModules.anytype
             ];
 
             options.control = {
@@ -50,7 +52,7 @@
                 type = lib.types.str;
                 default = "/control_appdata";
                 defaultText = "/control_appdata";
-                description = "Subdomain to use for Jellyfin";
+                description = "Default path to store data of all applications";
               };
             };
           };
