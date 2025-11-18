@@ -51,7 +51,7 @@ in {
         description = "Port for any-sync-node-2.";
       };
       node3 = mkOption {
-        type = typesins.int;
+        type = types.int;
         default = 4802;
         description = "Port for any-sync-node-3.";
       };
@@ -110,7 +110,7 @@ in {
           "--network=anytype-net"
           "--pull=always"
         ];
-        command = [ "--replSet" "rs0" ];
+        entrypoint = [ "--replSet" "rs0" ];
       };
 
       any-sync-redis = {
@@ -131,7 +131,7 @@ in {
           MINIO_ROOT_USER = "minio";
           MINIO_ROOT_PASSWORD = "miniopassword";
         };
-        command = [ "server" "/data" "--console-address" ":9001" ];
+        entrypoint = [ "server" "/data" "--console-address" ":9001" ];
         extraOptions = [
           "--network=anytype-net"
           "--pull=always"
@@ -196,7 +196,7 @@ in {
           "${cfg.paths.default}/any-sync-node-2:/storage"
         ];
         extraOptions = [
-          "--network=anytypenet"
+          "--network=anytype-net"
           "--pull=always"
         ];
       };
