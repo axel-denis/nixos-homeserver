@@ -138,6 +138,6 @@ in {
         "https://acme-staging-v02.api.letsencrypt.org/directory";
     };
 
-    networking.firewall = { allowedTCPPorts = [ 80 443 ]; };
+    networking.firewall = { allowedTCPPorts = [ 80 443 ]; allowedUDPPorts = [ 10008 ] };
   };
 }
