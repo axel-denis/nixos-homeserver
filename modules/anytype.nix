@@ -11,6 +11,12 @@ in {
     subdomain = "anytype";
     port = 10008;
   }) // {
+    quic = lib.mkOption { # FIXME - should not be set to false
+      type = lib.types.bool;
+      default = true;
+      defaultText = "true";
+      description = "enables quic for this module";
+    };
     paths = {
       default = helpers.mkInheritedPathOption {
         parentName = "home server global default path";
@@ -22,8 +28,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    quic = true; # enables quic protocol for the routing module
-
     virtualisation.docker.enable = true;
     virtualisation.oci-containers.backend = "docker";
 
