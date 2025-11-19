@@ -9,7 +9,7 @@ in {
     name = "Anytype";
     version = "latest"; # 1.1.2-2025-10-24
     subdomain = "anytype";
-    port = 10008;
+    port = 33010;
   }) // {
     paths = {
       default = helpers.mkInheritedPathOption {
@@ -30,13 +30,13 @@ in {
         image = "docker.io/traefik:v3.5.3";
         ports = [
           (helpers.webServicePort config cfg 33010)
-          "${helpers.webServicePort config cfg 33020}/udp"
+          "${helpers.webServicePort config cfg 33010}/udp"
         ];
         cmd = [
           "--providers.docker=true"
           "--providers.docker.exposedbydefault=false"
           "--entrypoints.any-sync-tcp.address=:33010"
-          "--entrypoints.any-sync-udp.address=:33020/udp"
+          "--entrypoints.any-sync-udp.address=:33010/udp"
         ];
         environment = { # FIXME - will not work on lan only, as lan only require server ip here:
           ANY_SYNC_BUNDLE_INIT_EXTERNAL_ADDRS = "${cfg.subdomain}.${config.control.routing.domain}";
@@ -68,10 +68,10 @@ in {
           # Try TLS passthrough
           "traefik.tcp.services.any-sync-tcp-service.loadbalancer.server.port" = "33010";
           # UDP Router Configuration
-          # Routes all UDP traffic on port 33020 to any-sync-bundle
+          # Routes all UDP traffic on port 33010 to any-sync-bundle
           "traefik.udp.routers.any-sync-udp.entrypoints" = "any-sync-udp";
           "traefik.udp.routers.any-sync-udp.service" = "any-sync-udp-service";
-          "traefik.udp.services.any-sync-udp-service.loadbalancer.server.port" = "33020";
+          "traefik.udp.services.any-sync-udp-service.loadbalancer.server.port" = "33010";
         };
       };
     };
