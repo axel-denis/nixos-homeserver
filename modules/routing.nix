@@ -126,8 +126,17 @@ in {
             '' else
               "")
           ];
+          quic = module ? quic && module.quic; # enable quic protocol for a module
         }));
     };
+
+    streamConfig = ''
+      server {
+        listen 127.0.0.1:10008 udp reuseport;
+        proxy_timeout 20s;
+        proxy_pass 192.168.0.1:53535;
+      }
+    '';
 
     # Let's Encrypt (ACME)
     security.acme = mkIf cfg.letsencrypt.enable {
