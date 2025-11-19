@@ -2,3 +2,6 @@
 
 - basicAuth is known to prevent ACME
 - better password handling
+
+# FIXME
+- lan routing still working ?
