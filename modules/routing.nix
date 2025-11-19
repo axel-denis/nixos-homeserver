@@ -65,6 +65,7 @@ in {
   config = mkIf cfg.enable {
     services.nginx = {
       enable = true;
+      package = pkgs.nginxQuic;
 
       appendHttpConfig = strings.concatStringsSep "\n" [
         ''
