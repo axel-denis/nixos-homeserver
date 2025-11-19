@@ -127,6 +127,7 @@ in {
             '' else
               "")
           ];
+          http3 = module ? quic && module.quic; # enable quic protocol for a module;
           quic = module ? quic && module.quic; # enable quic protocol for a module
         }));
     };
