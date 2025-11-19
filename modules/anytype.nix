@@ -89,8 +89,8 @@ in {
         image = "ghcr.io/anyproto/any-sync-coordinator:${cfg.version}";
         volumes = [ "${cfg.paths.etc}/any-sync-coordinator:/etc/any-sync-coordinator" ];
         ports = [
-          helpers.webServicePort config cfg 443
-          "${helpers.webServicePort config cfg 443}/udp"
+          (helpers.webServicePort config cfg 443)
+          ("${helpers.webServicePort config cfg 443}/udp")
         ];
         extraOptions = [
           "--network=anytype-net"

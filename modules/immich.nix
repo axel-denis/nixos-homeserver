@@ -68,7 +68,7 @@ in
     virtualisation.oci-containers.containers = {
       immich_server = {
         image = "ghcr.io/immich-app/immich-server:${cfg.version}";
-        ports = helpers.webServicePort config cfg 2283;
+        ports = [(helpers.webServicePort config cfg 2283)];
         environment = {
           DB_USERNAME = "postgres";
           DB_DATABASE_NAME = "immich";

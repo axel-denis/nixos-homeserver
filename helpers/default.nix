@@ -111,12 +111,11 @@
     };
 
   # Setting containers exposure for webservices
-  webServicePort = globalConfig: moduleConfig: containerPort: [
+  webServicePort = globalConfig: moduleConfig: containerPort:
     "${
       if (globalConfig.control.routing.lan || moduleConfig.forceLan || moduleConfig.lanOnly) then
         ""
       else
         "127.0.0.1:"
-    }${toString moduleConfig.port}:${toString containerPort}"
-  ];
+    }${toString moduleConfig.port}:${toString containerPort}";
 }

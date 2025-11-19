@@ -62,7 +62,7 @@ in
       ];
 
       environmentFiles = [ cfg.environmentFile ];
-      ports = helpers.webServicePort config cfg 9091;
+      ports = [(helpers.webServicePort config cfg 9091)];
     };
   };
 }
